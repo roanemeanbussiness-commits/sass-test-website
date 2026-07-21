@@ -1,0 +1,141 @@
+.story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 90px);
+  align-items: start;
+}
+
+.big {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.storyBody p {
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+.storyBody p + p {
+  margin-top: 1.2em;
+}
+
+.storyBody strong {
+  color: var(--gold-deep);
+  font-weight: 600;
+}
+
+/* Values */
+.values {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+.value {
+  padding: 40px 40px 40px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.value:nth-child(odd) {
+  border-right: 1px solid var(--line);
+  padding-right: 40px;
+}
+
+.value:nth-child(even) {
+  padding-left: 40px;
+}
+
+.valueNum {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--gold-deep);
+}
+
+.valueTitle {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin: 14px 0 12px;
+}
+
+.valueBody {
+  margin: 0;
+  color: var(--ink-2);
+}
+
+/* Team */
+.team {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.member {
+  padding: 32px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--gold-deep);
+  background: var(--gold-soft);
+  margin-bottom: 22px;
+}
+
+.memberName {
+  font-size: 1.35rem;
+  margin-bottom: 4px;
+}
+
+.memberRole {
+  color: var(--gold-deep);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 14px;
+}
+
+.memberBio {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 860px) {
+  .story {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .values {
+    grid-template-columns: 1fr;
+  }
+  .value,
+  .value:nth-child(odd),
+  .value:nth-child(even) {
+    padding: 32px 0;
+    border-right: 0;
+  }
+  .team {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 1080px) and (min-width: 861px) {
+  .team {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

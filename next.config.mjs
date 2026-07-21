@@ -1,49 +1,22 @@
-.wrap {
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-}
+/** @type {import('next').NextConfig} */
 
-.track {
-  display: flex;
-  align-items: center;
-  gap: 64px;
-  width: max-content;
-  animation: marquee 48s linear infinite;
-}
+// Static export so the site can be hosted anywhere (Vercel, Netlify, GitHub
+// Pages, S3, etc.) and, importantly, so every page is pre-rendered to plain
+// HTML. That gives our SEO / GEO / AEO agent clean, crawlable markup with no
+// client-side rendering ambiguity.
 
-.wrap:hover .track {
-  animation-play-state: paused;
-}
+// When hosting under a sub-path (e.g. GitHub Pages project sites at
+// /repo-name), set NEXT_PUBLIC_BASE_PATH so links and assets resolve correctly.
+// Leave it empty for root-domain hosts like Vercel or a custom domain.
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
-.logo {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  letter-spacing: -0.01em;
-  color: var(--muted);
-  white-space: nowrap;
-  opacity: 0.72;
-  transition: opacity 0.3s var(--ease), color 0.3s var(--ease);
-}
+const nextConfig = {
+  output: "export",
+  trailingSlash: true,
+  images: {
+    unoptimized: true,
+  },
+  ...(basePath ? { basePath } : {}),
+};
 
-.logo:hover {
-  opacity: 1;
-  color: var(--ink);
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .track {
-    animation: none;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-}
+export default nextConfig;

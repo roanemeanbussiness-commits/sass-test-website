@@ -1,0 +1,221 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
+  backdrop-filter: saturate(1.4) blur(12px);
+  -webkit-backdrop-filter: saturate(1.4) blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+}
+
+.scrolled {
+  border-bottom-color: var(--line);
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 74px;
+}
+
+.brand {
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 9px 14px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink-2);
+  border-radius: var(--radius);
+  transition: color 0.2s var(--ease), background 0.2s var(--ease);
+}
+
+.navLink:hover {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--paper-2) 70%, transparent);
+}
+
+.active {
+  color: var(--ink);
+}
+
+.caret {
+  opacity: 0.55;
+  transition: transform 0.25s var(--ease);
+}
+
+/* Dropdown */
+.group {
+  position: relative;
+}
+
+.group:hover .caret {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 8px);
+  padding-top: 14px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.22s var(--ease), transform 0.22s var(--ease);
+  pointer-events: none;
+}
+
+.group:hover .dropdown,
+.group:focus-within .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+
+.dropdownInner {
+  width: 340px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 10px;
+  box-shadow: 0 30px 60px -30px rgba(24, 20, 8, 0.4);
+}
+
+.dropdownItem {
+  display: block;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  transition: background 0.18s var(--ease);
+}
+
+.dropdownItem:hover {
+  background: var(--paper-2);
+}
+
+.dropdownLabel {
+  display: block;
+  font-weight: 600;
+  font-size: 0.94rem;
+  color: var(--ink);
+}
+
+.dropdownDesc {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.cta {
+  padding: 12px 20px;
+  font-size: 0.86rem;
+}
+
+.burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+}
+
+/* Mobile */
+.mobile {
+  display: none;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 900px) {
+  .nav {
+    display: none;
+  }
+  .cta {
+    display: none;
+  }
+  .burger {
+    display: inline-flex;
+  }
+  .mobile {
+    display: block;
+    position: fixed;
+    inset: 74px 0 0;
+    background: var(--paper);
+    border-top: 1px solid var(--line);
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.25s var(--ease), transform 0.25s var(--ease), visibility 0.25s;
+  }
+  .mobileOpen {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+  .mobileNav {
+    padding: 18px 24px 40px;
+  }
+  .mobileLink,
+  .mobileGroupBtn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px 4px;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--ink);
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+  }
+  .caretUp {
+    transform: rotate(180deg);
+  }
+  .mobileSub {
+    display: flex;
+    flex-direction: column;
+    padding: 6px 4px 14px 16px;
+  }
+  .mobileSubLink {
+    padding: 11px 0;
+    font-size: 1rem;
+    color: var(--ink-2);
+  }
+  .mobileCta {
+    margin-top: 24px;
+    width: 100%;
+  }
+}
